@@ -11,6 +11,8 @@ Simple Geography:
   
 Stock Profile:
   The main page provides the user with list of top 500 Nasdaq companies to choose from. The client can select up to five companies to compare, which will redirect the user to another page with detailed information on all the selected companies. The information is retrieved in real-time from yahoo finance. The client then has options to buy or sell stocks. All of the clients transactions are stored in a database for clients review, which is available under the portfolio page.
+
+Note: This was a group project. I did all the Javascript and PHP coding.
   
 Zipcode Locator:
   The user can click anywhere on the United States map and submit the coordinates to retrieve nearby zipcodes. The user can choose how many zipcodes are displayed from the drop-down list upto a maximum of 25.
