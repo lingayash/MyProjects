@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<title>Image Filters</title>
+	<meta charset="utf-8">
+	<meta name="description" content="Image Filtering">
+	<meta name="keywords" content="Image Filter">
+	<link rel="stylesheet" href="HW3.css">
+	<script src="rgb-hsv_converter.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		var minHue,maxHue;
+		var test=0;
+		var filterData1 = [0,0,0];
+		var filterData2 = [0,0,0];
+		var filterData3 = [0,0,0];
+		function request(){
+			var xmlhttp=new XMLHttpRequest( );
+			xmlhttp.onreadystatechange=function( ){
+				if (xmlhttp.readyState==4 && xmlhttp.status==200){
+					var xmlDoc = xmlhttp.responseText;
+					var txt="";
+					var imgList = xmlDoc.split("\n");
+					for(var i=0;i<imgList.length;i++){	
+						txt += "<option value=\""+ imgList[i] +"\">"+imgList[i]+"</option> <br />";
+					//	console.log(imgList[i]);
+					}
+					document.getElementById("selectPic").innerHTML = txt;
+				}
+			}
+			xmlhttp.open("GET","images.txt",true);
+			xmlhttp.send( );
+		}
+		request();
+
+	</script>
+	<div class="wrapper">
+		<div class="title">
+			<p>COM 214 - Multiple Image Filters</p>
+		<div>
+		<div class="main">
+			<div class="inner">
+				<div class="innerTop">
+					<p class="filt">Filter 1</p>
+					<script>
+					document.write('<input name="filters" class="filtCheck" type="checkbox" value="' + filterData1 + '" />');
+					</script>
+					<input type="range" class="slider" min="0" max="360" value="0" step="1" onchange='filterData1 = drawCan2(c,c2,imgd,this.value)' />
+				</div>
+				<div class="innerBottom">
+					<canvas id="layer1" width="160" height="160">
+						Your browser does not support the canvas element.
+					</canvas>
+				</div>
+			</div>
+			<div class="inner">
+				<div class="innerTop">
+					<p class="filt">Filter 2</p>
+					<script>
+					document.write('<input name="filters" class="filtCheck" type="checkbox" value="' + filterData2 + '" />');
+					</script>
+					<input type="range" class="slider" min="0" max="360" value="0" step="1" onchange='filterData2 = drawCan2(c21,c22,imgd,this.value)' />
+				</div>
+				<div class="innerBottom">
+					<canvas id="layer2" width="160" height="160">
+						Your browser does not support the canvas element.
+					</canvas>
+				</div>
+			</div>
+			<div class="inner">
+				<div class="innerTop">
+					<p class="filt">Filter 3</p>
+					<script>
+					document.write('<input name="filters" class="filtCheck" type="checkbox" value="' + filterData3 + '" />');
+					</script>
+					<input type="range" class="slider" min="0" max="360" value="0" step="1" onchange='filterData3=drawCan2(c31,c32,imgd,this.value)' />
+				</div>
+				<div class="innerBottom">
+					<canvas id="layer3" width="160" height="160">
+						Your browser does not support the canvas element.
+					</canvas>
+				</div>
+			</div>
+			<div class="inner">
+				<div class="innerTop">
+					<p class="filt">Filter Ranges</p>
+					<input type="range" class="slider" min="0" max="160" value="0" step="1" onchange='setRange(this.value)' />
+				</div>
+				<div class="innerBottom">
+					<p class="filt">Select Image</p>
+					<select id="selectPic" onchange="changePic();"></select>
+					<button type="button" id="buttons" onClick="getFilters()">-- Filter --</button> 
+				</div>
+			</div>
+		</div>
+		<div class="canHolder">
+			<div class="can">
+				<div class="Absolute-Center">
+					<canvas id="pic1" width="345" height="345">
+						Your browser does not support the canvas element.
+					</canvas>
+				</div>
+			<!--<script type="text/javascript">changePic();</script>-->
+			</div>
+			<div class="can">
+				<div class="Absolute-Center">
+					<canvas id="pic2" width="345" height="345">
+						Your browser does not support the canvas element.
+					</canvas>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">				
+		var canv=document.getElementById("layer1");
+		var canv2=document.getElementById("layer2");
+		var canv3=document.getElementById("layer3");
+		var	c = canv.getContext("2d");
+		var	c2 = canv.getContext("2d");
+		var c21=canv2.getContext("2d");
+		var c22=canv2.getContext("2d");
+		var c31=canv3.getContext("2d");
+		var c32=canv3.getContext("2d");
+		var width=160;
+		var height=160;
+		var imgd = c.createImageData(width,height);
+		var r = 30;
+		var dialAngle =0;
+		var cx = 80;
+		var cy = 75;
+		function drawCan1(ctx, imgdata){
+			var arcLength = 0;
+			var angle=0;
+			var x, y;
+			var pix = imgdata.data;
+			var i=0;
+			var j=0;
+			var w=0;
+			for(r;r<60;r++){
+				for(var i=0;i<1000;i++){
+					angle = i*180/Math.PI;
+					x = parseInt(cx+r*Math.cos(angle));
+					y = parseInt(cy+r*Math.sin(angle));
+					arcLength = angle*r;
+					w = 2*Math.PI*r;
+					rgbCol = hsvToRgb(arcLength/w, 1, 1);
+					j = (x+y*width)*4;
+					pix[j  ] = rgbCol[0]; 	// red channel
+					pix[j+1] = rgbCol[1];  	// blue channel
+					pix[j+2] = rgbCol[2];  	// green channel
+					pix[j+3] = 255; 		// alpha channel
+				}
+			}
+			ctx.putImageData(imgdata, 0, 0);
+		}
+		drawCan1(c,imgd);	//draw spectrum in first div
+		drawCan1(c21,imgd);	//draw second div
+		drawCan1(c31,imgd);	//draw third div
+		
+		
+		//function to draw the dials on the spectrum, uses previously generated
+		//imagedata to redraw spectrum
+		function drawCan2(ctx1, ctx2, imgdata,newValue){
+			var sliderValue = parseInt(newValue);
+			ctx2.clearRect(0, 0, width, height);
+			ctx1.putImageData(imgdata, 0, 0);
+			ctx2.beginPath();
+			ctx2.moveTo(cx,cy);
+			var sliderAngle1 = sliderValue*Math.PI/180;
+			var xDial = parseInt(cx+r*Math.cos(sliderAngle1));
+			var yDial = parseInt(cy+r*Math.sin(sliderAngle1));
+			ctx2.lineTo(xDial,yDial);
+			ctx2.stroke();
+			ctx2.closePath();
+			ctx2.beginPath();
+			ctx2.moveTo(cx,cy);
+			dial2 = (sliderValue+dialAngle)%360;
+			var sliderAngle2 = (dial2)*Math.PI/180;
+			xDial2 = parseInt(cx+r*Math.cos(sliderAngle2));
+			yDial2 = parseInt(cy+r*Math.sin(sliderAngle2));
+			ctx2.lineTo(xDial2,yDial2);
+			ctx2.stroke();
+			ctx2.closePath();
+			minHue = sliderAngle1/(2*Math.PI);
+			maxHue = sliderAngle2/(2*Math.PI);
+		//	console.log(minHue,maxHue);
+			return[minHue,maxHue,sliderValue];
+		}
+		drawCan2(c,c2,imgd,filterData1[2]);
+		drawCan2(c21,c22,imgd,filterData2[2]);
+		drawCan2(c31,c32,imgd,filterData3[2]);
+
+		function setRange(val){
+			dialAngle = parseInt(val);
+			filterData1 = drawCan2(c,c2,imgd,filterData1[2]);
+			filterData2 = drawCan2(c21,c22,imgd,filterData2[2]);
+			filterData3 = drawCan2(c31,c32,imgd,filterData3[2]);
+		}
+					
+		var selectedPic = "Dali.jpg";
+		function getFilters(){
+			var filtData = document.getElementsByName("filters");
+			var filtArr = new Array();
+			if( filtData[0].checked )
+				filtArr.push(filterData1);
+			if( filtData[1].checked )
+				filtArr.push(filterData2);
+			if( filtData[2].checked )
+				filtArr.push(filterData3);
+			var canv=document.getElementById("pic2");
+			var c=canv.getContext("2d");
+			var c2=canv.getContext("2d");
+			c2.font = '15pt Georgia';
+			c.clearRect(0, 0, canv.width, canv.height);
+			if(filtArr.length != 0){
+				var picSelect = document.getElementById("selectPic");
+				if(typeof(picSelect.options[picSelect.selectedIndex]) != 'undefined'){
+					selectedPic = picSelect.options[picSelect.selectedIndex].value;
+				}
+				
+				var img = new Image(); 
+				var w, h;
+				var factor;
+				
+				img.onload = function(){
+					var side = Math.max(this.height, this.width);
+					var factor = 345/side;		//determine scaling factor based on the longest side
+					h = this.height * factor;	//scaling the image
+					w = this.width * factor;
+					canv.width = w;			// resize the canvas to the new image size
+					canv.height = h;
+					c.drawImage(img, 0, 0, w, h );
+					var imgd  = c.getImageData(0, 0, canv.width, canv.height);
+					var pix = imgd.data;
+					var hsv;
+					var min, max
+					var temp;
+					var count=0;
+					for(var i=0;i< pix.length;i+=4){
+						hsv = rgbToHsv(pix[i],pix[i+1],pix[i+2])
+						for(var j=0;j<filtArr.length;j++){
+							temp=filtArr[j];
+							min = Math.min(temp[0],temp[1]);
+							max = Math.max(temp[0],temp[1]);
+							if(min<hsv[0] && hsv[0]<max){
+								count+=1;
+							}
+						}
+						if(count<1){
+							pix[i] = 0;
+							pix[i+1] = 0;
+							pix[i+2] = 0;
+						
+						}
+						count=0;
+					}		
+					c.putImageData(imgd,0,0);
+					c2.fillStyle = '#ff9900';
+					c2.fillText("Shiva Lingala",10,10);
+				}
+				img.src = selectedPic;
+			}
+			else{
+				c2.fillStyle = 'black';
+				c.fillRect(0, 0, canv.width, canv.height);
+				c2.fillStyle = '#ff9900';
+				c2.fillText("Shiva Lingala",10,20);
+			}
+			
+		}
+		
+		function changePic(){
+			getFilters();
+			var picSelect = document.getElementById("selectPic");
+			if(typeof(picSelect.options[picSelect.selectedIndex]) != 'undefined'){
+				selectedPic = picSelect.options[picSelect.selectedIndex].value;
+			}
+			var canv=document.getElementById("pic1");
+            var c=canv.getContext("2d");
+			var c2=canv.getContext("2d");
+			c2.font = '15pt Georgia';
+			c2.fillStyle = '#ff9900';
+			c.clearRect(0, 0, canv.width, canv.height);
+            var img = new Image();  
+            var w, h;
+			var factor;
+              
+            img.onload = function(){
+				var side = Math.max(this.height, this.width);
+				var factor = 345/side;		//determine scaling factor based on the longest side
+                h = this.height * factor;	//scaling the image
+                w = this.width * factor;    
+				canv.width = w;			// resize the canvas to the new image size
+				canv.height = h;
+                c.drawImage(img, 0, 0, w, h );
+				c2.fillStyle = '#ff9900';
+				c2.fillText("Shiva Lingala",10,10);
+            }
+			img.src = selectedPic;
+        }
+		changePic();
+	</script>
+</body>
+
+</html>

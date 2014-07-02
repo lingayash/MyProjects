@@ -1,0 +1,143 @@
+
+body {
+text-align: center;
+}
+.wrapper{
+text-align:center;
+margin: 0 auto;
+}
+p{
+text-align:center;
+margin-top:0px;
+font-size:30px;
+}
+.title
+{
+text-align:center;
+margin:0 auto;
+width:950px;
+height:30px;
+background-color:grey;
+border-width:3px;
+border-style:solid;
+border-color:#ff9900;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+line-height:18px;
+padding-top:12px;
+}
+.main
+{
+
+text-align:center;
+margin: 0 auto;
+margin-top:-6px;
+width:950px;
+height:230px;
+display: block;
+padding-top:10px;
+background-color:grey;
+border-width:3px;
+border-style:solid;
+border-color:#ff9900;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+}
+.inner
+{
+vertical-align:top;
+display: inline-block;
+margin:5px;
+width:210px;
+height:209px;
+background-color:#ff9900;
+border-width:3px;
+border-style:solid;
+border-color:#ff9900;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+}
+.innerTop
+{
+margin:-1px;
+width:207px;
+height:50px;
+background-color:grey;
+border-width:3px;
+border-style:solid;
+border-color:#ff9900;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+}
+.innerBottom
+{
+margin:-1px;
+width:207px;
+height:150px;
+background-color:grey;
+border-width:3px;
+border-style:solid;
+border-color:#ff9900;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+}
+.canHolder
+{
+margin: 0 auto;
+text-align:center;
+display: block;
+padding-top:5px;
+width:900px;
+height:500px;
+}
+.can
+{
+padding:8px;
+vertical-align:middle;
+display: inline-block;
+margin:5px;
+background-color:grey;
+border-width:3px;
+border-style:solid;
+border-color:#ff9900;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+}
+.slider{
+margin-top:-20px;
+width:140px;
+}
+.filt{
+margin-top:5px;
+text-align:center;
+margin-bottom:10px;
+font-size:20px;
+}
+.filtCheck{
+float:right;
+margin-top:-25px;
+margin-right:50px;
+}
+#selectPic{
+margin-top:10px;
+}
+#buttons{
+
+margin-top:25px;
+font:18px serif;
+background: #ff9900;
+border: 3px solid #ff9900;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+}
+
+
+
+
+

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<meta name="author" content="Shiva Lingala" />
+</head>
+<body>
+	<h1>
+	Author - Shiva Lingala</br>
+	Objective
+	</h1>
+	<p>
+		To give a very simple pictorial guide to a geographical locations and maps of countries across the world.
+	</p>
+	<h2>
+	Website and Target Audience
+	</h2>
+	<p>
+		The website presents the audience with a grid of flags from 20 different countries. When the user clicks on a flag, either the geographical
+		location, the map or the emblem of that country is shown in viewport. The user can choose between the location, the map and emblem by clicking
+		on the buttons provided in the heading.
+		</br>
+		The target audience for this website are children under the age of 10. I think this would be a handy and interactive tool for children to learn
+		geography.
+	</p>
+	<h2>
+	Design Considerations and Aesthetics
+	</h2>
+	<p>
+		When the user clicks on a flag, my plan was to have a slideshow of different pictures that say something about the country. I couldn't figure
+		out how to do that, so I decided to have buttons in the heading that will give the user choice to switch between different information about
+		the countries. I was going to store images in the mysql database, after some research I found out that it was bad practice. Instead I decided 
+		to store the path name to each of the images in the database. In order to first populate the database I created a csv document which the php
+		code will read and load into the database. This information is then accessed as needed.
+	</p>
+	<p>
+		I wanted the background to be the world map and have it stay fixed while user scrolls through the content, this gives the page a very sophisticated
+		look and I am glad that I was able to implement this functionality. Using lightbox to display images on click was also something I planned. When I
+		started out I did not even know that the implementation was called lightbox, after a few failed google searches I found out.
+	</p>
+	<p>
+		I also wanted to include more information, like major festivels, important buildings etc. I did not have the time and resources to collect all the data. 
+	</p>
+	
+	<h2>
+		Description of the client-side user interactivity.
+	</h2>
+	<p>
+		The client interaction is very simple. The user only needs to click on desired buttons/links to the access information.
+	</p>
+	
+	<h2>
+		Nature of information exchange with the server.
+	</h2>
+	<p>
+		There is only one way information exchange. When the page loads, all the required information to run the website is received from the server.
+	</p>
+	<h2>
+		Operations performed on the server.
+	</h2>
+	<p>
+		The paths to different images are all read from the csv file and stored in a database. This database is then accessed through php and the 
+		html code is generated and sent to the user.
+	</p>
+	
+	<table border="1">
+		<tr>
+			<th></th>
+			<td>Main Page</td>
+			<td>Photo Editor</td>
+			<td>Name Search</td>
+			<td>Video Player</td>
+		</tr>
+			<th>HTML5</th>
+			<td>X</td>
+			<td>X-resizing</td>
+			<td>X-lightbox</td>
+			<td></td>
+		<tr>
+			<th>XMLHTTPRequest</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>JavaScript</th>
+			<td>X</td>
+			<td></td>
+			<td>X</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>PHP</th>
+			<td>X</td>
+			<td>X-image paths</td>
+			<td>x-image selection</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>MySQL</th>
+			<td>X-generate flags</td>
+			<td>X-viewport</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+</body>
+
+</html>
+
+
+

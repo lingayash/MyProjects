@@ -1,0 +1,134 @@
+
+body {
+text-align: center;
+}
+.wrapper{
+text-align:center;
+margin: 0 auto;
+}
+
+.title{
+text-align:center;
+margin:0 auto;
+color:brown;
+width:934px;
+height:20px;
+background-color:Khaki;
+border-width:3px;
+border-style:solid;
+border-color:brown;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+line-height:18px;
+padding-top:8px;
+}
+.canMain{
+text-align:center;
+margin: 0 auto;
+margin-top:5px;
+width:944px;
+height:500px;
+padding-top:5px;
+background-color:grey;
+border-width:3px;
+border-style:solid;
+border-color:brown;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+}
+.otherMain{
+text-align:center;
+margin: 0 auto;
+margin-top:5px;
+width:940px;
+overflow:hidden;
+padding:2px;
+background-color:grey;
+border-width:3px;
+border-style:solid;
+border-color:brown;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+}
+#listHolder{
+margin: 0 auto;
+margin-top:2px;
+text-align:center;
+padding:5px;
+background-color:lightGray;
+border-width:2px;
+border-style:solid;
+border-color:brown;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+}
+
+#zip{
+color:orangered;
+}
+.area{
+color:blue;
+}
+.cord{
+color:brown;
+}
+table{
+margin: 0 auto;
+border-collapse:collapse;
+}
+td, th {
+padding-left:10px;
+padding-right:10px;
+border: 2px solid green;
+text-align: center;
+}
+#info{
+margin-top:-8px;
+font-size:20px;
+}
+
+#topInfo{
+margin-top:-4px;
+padding-left:10px;
+}
+#heading{
+float:left;
+font-size:25px;
+font-weight:bold;
+}
+.topButtons{
+font:15px serif;
+color:yellow;
+background: #2F4F4F;
+border: 1px solid grey;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+}
+#selectItems{
+border: 1px solid grey;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+}
+.buttons{
+font:18px serif;
+color:yellow;
+background: #2F4F4F;
+border: 1px solid grey;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+}
+
+#xpos, #ypos{
+border: 1px solid grey;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+}
+
+
+
+
+
